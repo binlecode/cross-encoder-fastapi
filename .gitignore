@@ -1,0 +1,72 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+.Python
+.env
+.venv
+env/
+venv/
+ENV/
+env.bak/
+venv.bak/
+.pytest_cache/
+*.so
+.Python
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+
+# Docker
+.dockerignore
+
+# Hugging Face cache
+.cache/
+.huggingface/
+
+# IDE files
+.idea/
+.vscode/
+*.swp
+*.swo
+
+# Logs
+logs/
+*.log
+
+# Environment variables and secrets
+.env
+.env.local
+.env.*.local
+*.env
+credentials.json
+*_key.json
+*_token
+*_access_key
+
+# Model files - large binary files
+*.pt
+*.pth
+*.bin
+*.onnx
+*.safetensors
+model/
+models/
+
+# Mac OS
+.DS_Store
+
+# Docker hub tokens / authentication files
+.dockerhub_token

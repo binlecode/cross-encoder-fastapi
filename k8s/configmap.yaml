@@ -1,0 +1,8 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: cross-encoder-config
+  namespace: cross-encoder
+data:
+  SECRET_KEY: "place-holder-for-web-app-secret-key"
+  HF_TOKEN: "place-holder-for-huggingface-token"

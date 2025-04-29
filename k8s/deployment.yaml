@@ -1,0 +1,44 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: cross-encoder
+  namespace: cross-encoder
+  labels:
+    app: cross-encoder
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: cross-encoder
+  template:
+    metadata:
+      labels:
+        app: cross-encoder
+    spec:
+      serviceAccountName: cross-encoder-sa
+      nodeSelector:
+        cloud.google.com/gke-nodepool: "poc-spot-pool-g2-l4"
+      tolerations:
+      - key: "nvidia.com/gpu"
+        operator: "Exists"
+        effect: "NoSchedule"
+      containers:
+      - name: cross-encoder
+        image: ikalidocker/cross-encoder-fastapi:gpu
+        imagePullPolicy: Always
+        resources:
+          # MAKE SURE to request and limit gpu resources
+          # otherwise the node may not request gpu for the pod !
+          requests:
+            nvidia.com/gpu: 1
+            memory: "2Gi"
+            cpu: "1"
+          limits:
+            nvidia.com/gpu: 1
+            memory: "2Gi"
+            cpu: "1"
+        ports:
+        - containerPort: 8000
+        env:
+        - name: LOG_LEVEL
+          value: "info"

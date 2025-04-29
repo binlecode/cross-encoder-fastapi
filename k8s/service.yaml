@@ -1,0 +1,12 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: cross-encoder-service
+  namespace: cross-encoder
+spec:
+  type: ClusterIP
+  selector:
+    app: cross-encoder
+  ports:
+  - port: 8000
+    targetPort: 8000
